@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Productivity Tracker Settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+      color: #0f172a;
+    }
+    
+    .header p {
+      color: #64748b;
+      margin: 8px 0 0 0;
+    }
+    
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .section h3 {
+      margin: 0 0 16px 0;
+      color: #0f172a;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .setting-row:last-child {
+      margin-bottom: 0;
+    }
+    
+    .setting-label {
+      font-weight: 500;
+      color: #374151;
+    }
+    
+    .setting-description {
+      font-size: 14px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    
+    input, select, textarea {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      min-width: 200px;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    .category-list {
+      margin-top: 12px;
+    }
+    
+    .category-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding: 8px;
+      background: #f8fafc;
+      border-radius: 6px;
+    }
+    
+    .category-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .category-productive { background: #dcfce7; color: #166534; }
+    .category-unproductive { background: #fee2e2; color: #991b1b; }
+    .category-neutral { background: #fef3c7; color: #92400e; }
+    
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+    
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+    
+    .success-message {
+      background: #dcfce7;
+      color: #166534;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 16px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Settings</h1>
+    <p>Customize your productivity tracking experience</p>
+  </div>
+  
+  <div class="section">
+    <h3>Goals & Tracking</h3>
+    
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Daily Productive Goal</div>
+        <div class="setting-description">Target productive hours per day</div>
+      </div>
+      <input type="number" id="productive-goal" min="1" max="24" value="8">
+    </div>
+    
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Enable Tracking</div>
+        <div class="setting-description">Track time spent on websites</div>
+      </div>
+      <input type="checkbox" id="tracking-enabled" checked>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h3>Website Categories</h3>
+    <p style="color: #6b7280; margin-bottom: 16px;">
+      Manage how websites are categorized for productivity analysis
+    </p>
+    
+    <div class="category-list" id="category-list">
+      <!-- Categories will be populated by JavaScript -->
+    </div>
+    
+    <div style="margin-top: 16px;">
+      <input type="text" id="new-website" placeholder="Add website (e.g., example.com)">
+      <select id="new-category">
+        <option value="productive">Productive</option>
+        <option value="unproductive">Unproductive</option>
+        <option value="neutral">Neutral</option>
+      </select>
+      <button class="btn btn-secondary" id="add-website">Add Website</button>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h3>Data Management</h3>
+    
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Export Data</div>
+        <div class="setting-description">Download your tracking data as JSON</div>
+      </div>
+      <button class="btn btn-secondary" id="export-data">Export</button>
+    </div>
+    
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Clear All Data</div>
+        <div class="setting-description">Remove all tracking history</div>
+      </div>
+      <button class="btn btn-secondary" id="clear-data">Clear Data</button>
+    </div>
+  </div>
+  
+  <div style="text-align: center; margin-top: 32px;">
+    <button class="btn btn-primary" id="save-settings">Save Settings</button>
+    <div class="success-message" id="success-message">
+      Settings saved successfully!
+    </div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
