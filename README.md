@@ -28,4 +28,7 @@ In summary, the Chrome Extension for Time Tracking and Productivity Analytics co
 
 #OUTPUT
 
-<img width="1898" height="866" alt="Image" src="https://github.com/user-attachments/assets/efa44df3-fcf1-44d9-bc94-4c84e4068a25" />
+<img width="499" height="575" alt="Image" src="https://github.com/user-attachments/assets/60e896be-57d0-46c7-8b9b-9b5c9ad169a5" />
+<img width="1556" height="843" alt="Image" src="https://github.com/user-attachments/assets/e1073264-ad55-4638-a6d6-b728ea75bbbb" />
+<img width="1897" height="849" alt="Image" src="https://github.com/user-attachments/assets/1b0df517-cb8a-426c-a8cb-f4507e2465cb" />
+<img width="1853" height="849" alt="Image" src="https://github.com/user-attachments/assets/f2e84135-2e6f-4c5f-9294-e831cc31e25e" />
